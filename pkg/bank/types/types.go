@@ -18,7 +18,6 @@ type PAN string
 
 //Card - платежная карта
 type Card struct {
-<<<<<<< HEAD
 	ID         int
 	PAN        PAN
 	Balance    Money
@@ -33,13 +32,11 @@ type Card struct {
 type Payment struct {
 	ID     int
 	Amount Money
-=======
-	ID       int
-	PAN      PAN
-	Balance  Money
-	Currency Currency
-	Color    string
-	Name     string
-	Active   bool
->>>>>>> 8984773dea0a3995a7ba94c524ebaa8a3ade4843
+}
+
+// PaymentSource - information about payment 'cards'
+type PaymentSource struct {
+	Type    string // 'card'
+	Number  string // number of card '5058 xxxx xxxx 8888'
+	Balance Money  // balance in dirams
 }

@@ -2,16 +2,10 @@ package card
 
 import (
 	"bank/pkg/bank/types"
-<<<<<<< HEAD
 	"math"
 )
 
 //IssueCard - card issuing
-=======
-)
-
-// IssueCard - creating a card
->>>>>>> 8984773dea0a3995a7ba94c524ebaa8a3ade4843
 func IssueCard(currency types.Currency, color string, name string) types.Card {
 	card := types.Card{
 		ID:       1000,
@@ -25,7 +19,6 @@ func IssueCard(currency types.Currency, color string, name string) types.Card {
 	return card
 }
 
-<<<<<<< HEAD
 //Withdraw - witdrawing money
 func Withdraw(card *types.Card, amount types.Money) {
 
@@ -107,14 +100,24 @@ func Total(cards []types.Card) types.Money {
 		total += card.Balance
 	}
 	return total
-=======
-// Withdraw - money withdraw
-func Withdraw(card types.Card, amount types.Money) types.Card {
+}
 
-	if card.Active == true && card.Balance >= amount && amount > 0 && amount <= 20_000_00 {
-		card.Balance -= amount
-	}
-	return card
-
->>>>>>> 8984773dea0a3995a7ba94c524ebaa8a3ade4843
+//PaymentSources = showing payment soures
+func PaymentSources(cards []types.Card,)[]types.PaymentSource {
+	paymentSources := []types.PaymentSource{}
+	for _, card := range cards {
+		if !card.Active {
+			continue
+		}
+		if card.Balance < 0 {
+			continue
+		}
+		paymentSource := types.PaymentSource {
+			Type : "card",
+			Number : string(card.PAN),
+			Balance : card.Balance,
+		}
+		paymentSources = append(paymentSources,paymentSource)
+	} 
+	return paymentSources;
 }

@@ -95,5 +95,28 @@ func ExampleMax() {
 	fmt.Println(result.ID)
 	//Output:
 	//99
+}
 
+func ExamplePaymentSources() {
+	cards := []types.Card{}
+	for i := 0; i < 10; i++ {
+		card := IssueCard(types.TJS, "black", "Ilhom")
+		cards = append(cards,card)
+	}
+	paymentSources := PaymentSources(cards)
+	for _, paymentSource := range paymentSources {
+		fmt.Println(paymentSource.Number, paymentSource.Balance)
+	}
+	//Output:
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	// 5058 xxxx xxxx 0001 0
+	
 }
